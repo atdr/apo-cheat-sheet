@@ -115,6 +115,48 @@ Also sufficient conditions (more complicated, s.26).
 Use the iterative active set strategy (s.28).
 
 \section{Lecture 3}
+\subsection{Propositional logic}
+\begin{tabular}{@{}ll@{}}
+    Symbol      & Meaning   \\
+    $\vee$      & OR        \\
+    $\oplus$    & XOR       \\
+    $\wedge$    & AND       \\
+    $\neg$      & NOT       
+\end{tabular}
+\subsection{Algebraic equations}
+\begin{enumerate}
+    \item Define binary variable $y_i$ for each clause $P_i$
+    \item Transform logic expressions to conjunctive normal form ($Q_1 \wedge Q_2 \wedge \ldots \wedge Q_n$)
+        \begin{itemize}
+            \item Replace implication ($P_{1} \Rightarrow P_{2} \equiv \neg P_1 \vee P_2$)
+            \item Apply de Morgan's theorem
+                \begin{equation}
+                    \begin{array}{l}
+                    \neg\left(P_{1} \wedge P_{2}\right) \Leftrightarrow\left(\neg P_{1} \vee \neg P_{2}\right) \\
+                    \neg\left(P_{1} \vee P_{2}\right) \Leftrightarrow\left(\neg P_{1} \wedge \neg P_{2}\right)
+                    \end{array}
+                \end{equation}
+            \item Factor out OR over AND
+                \begin{equation}
+                    \left(P_{1} \wedge P_{2}\right) \vee P_{3} \Leftrightarrow \underbrace{\left(P_{1} \vee P_{3}\right)}_{Q_{1}} \wedge \underbrace{\left(P_{2} \vee P_{3}\right)}_{Q_{2}}
+                \end{equation}
+        \end{itemize}
+\end{enumerate}
+Big-M constraints allow either/or and discontinuous expressions.
+Can use a series of binary variables to represent integers.
+\subsection{Integer cuts}
+To remove combination $\tilde{y}$, set $Z=\left\{i: \tilde{y}_{i}=0\right\}$ and $N Z=\left\{i: \tilde{y}_{i}=1\right\}$ then
+\begin{equation}
+    \sum_{i \in N Z} y_{i}-\sum_{i \in Z} y_{i} \leq|N Z|-1
+\end{equation}
+\subsection{(MI)LP relaxation}
+Remove integrality on $\boldsymbol{y}$; MILP becomes LP. Solution lower or equal to that of original MILP.
+\subsection{Branch-and-bound}
+Basic idea: fix some $y_k$ and solve relaxed subproblem $P_j$.
+\begin{description}
+    \item[Branching strategy] commonly most-fractional variable
+    \item[Node selection] newest/best bound (depth/breadth)
+\end{description}
 
 \section{Lecture 4}
 
