@@ -99,6 +99,20 @@ Neseccary and sufficient conditions:
 \end{description}
 
 \section{Lecture 2}
+\subsection{KKT optimality conditions}
+Lagrange function
+\begin{equation}
+    \mathcal{L}\left(\boldsymbol{x}, \boldsymbol{\lambda}, \boldsymbol{\mu}\right)= f\left(\boldsymbol{x}\right)+\boldsymbol{\lambda}^{T} \boldsymbol{h}\left(\boldsymbol{x}\right)+\boldsymbol{\mu}^{T} \boldsymbol{g}\left(\boldsymbol{x}\right)
+\end{equation}
+Necessary conditions
+\begin{align}
+    \nabla_{\boldsymbol{x}} \mathcal{L}\left(\boldsymbol{x}^{*}, \boldsymbol{\lambda}^{*}, \boldsymbol{\mu}^{*}\right)=\mathbf{0} \\
+    \boldsymbol{h}(\boldsymbol{x})=\mathbf{0} \\
+    \boldsymbol{\mu}^{* T} \boldsymbol{g}\left(\boldsymbol{x}^{*}\right)=\mathbf{0} \\
+    \boldsymbol{\mu}^{*} \geq \mathbf{0}
+\end{align}
+Also sufficient conditions (more complicated, s.26).
+Use the iterative active set strategy (s.28).
 
 \section{Lecture 3}
 
