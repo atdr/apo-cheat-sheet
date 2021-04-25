@@ -30,6 +30,74 @@
 
 \section{Lecture 1}
 
+\subsection{Problem formulation}
+\begin{equation}
+\begin{array}{cc}
+\min_{\boldsymbol{x}, \boldsymbol{y}}     & f(\boldsymbol{x}, \boldsymbol{y}) \\
+\text { s.t. }  & \boldsymbol{g}(\boldsymbol{x}, \boldsymbol{y}) \leq \mathbf{0} \\
+                & \boldsymbol{h}(\boldsymbol{x}, \boldsymbol{y}) = \mathbf{0} \\
+                & \boldsymbol{x} \in X \subset \mathbb{R}^{n} \\
+                & \boldsymbol{y} \in\{0,1\}^{q}
+\end{array}
+\end{equation}
+Bound constraints also feature:
+\begin{align}
+    x-x^{U} &\leq 0 & x^{L}-x &\leq 0
+\end{align}
+
+\subsection{Nonlinear optimisation}
+\begin{description}
+    \item[Degrees of Freedom] $\operatorname{DoF}=\operatorname{dim}(\boldsymbol{x})-\operatorname{dim}(\boldsymbol{h})$
+    \item[Feasible region] $F=\{\boldsymbol{x} \in X: \boldsymbol{h}(\boldsymbol{x})=\mathbf{0}, \boldsymbol{g}(\boldsymbol{x}) \leq \mathbf{0}\}$
+    \item[Optimal solution] $\boldsymbol{x}^{*} \in F: f\left(\boldsymbol{x}^{*}\right) \leq f(\boldsymbol{x}) \forall \boldsymbol{x} \in F$ 
+\end{description}
+
+\subsection{Basic concepts}
+\begin{description}
+    \item[Global minimum] $f\left(\boldsymbol{x}^{*}\right) \leq f(\boldsymbol{x}) \forall \boldsymbol{x} \in F$ 
+    \item[Strong minimum] If inequality can be strict ($<$)
+\end{description}
+
+\subsubsection{Convexity}
+\begin{equation*}
+    f\left(\alpha \boldsymbol{x}_{1}+(1-\alpha) \boldsymbol{x}_{2}\right) \leq \alpha f\left(\boldsymbol{x}_{1}\right)+(1-\alpha) f\left(\boldsymbol{x}_{2}\right), \forall \alpha \in[0,1]
+\end{equation*}
+Necessary \& sufficient conditions
+\begin{gather*}
+    f(x) \text { is convex } \Leftrightarrow f^{\prime \prime}(x) \geq 0 \\
+    f(x) \text { is strictly convex } \Leftrightarrow f^{\prime \prime}(x)>0\\
+    f(\boldsymbol{x}) \text { is strictly convex } \Leftrightarrow \mathbf{z}^{T} H(\boldsymbol{x}) \mathbf{z}>0, \forall \boldsymbol{x}, \forall \boldsymbol{z} \neq \mathbf{0}
+\end{gather*}
+Multidimensional functions: $\mathbf{z}^{T} H(\boldsymbol{x}) \mathbf{z}>0$ refers to eigenvalues of the Hessian matrix $H$
+\begin{equation}
+    H\left(x_{1}, x_{2}\right)=\nabla^{2} f\left(x_{1}, x_{2}\right)=\left(\begin{array}{cc}
+    \frac{\partial^{2} f}{\partial x_{1}^{2}} & \frac{\partial^{2} f}{\partial x_{1} \partial x_{2}} \\
+    \frac{\partial^{2} f}{\partial x_{1} \partial x_{2}} & \frac{\partial^{2} f}{\partial x_{2}^{2}}
+    \end{array}\right)
+\end{equation}
+\begin{equation}
+    \boldsymbol{\lambda} = \begin{cases}
+        > 0 & \text{+ve definite} \\
+        \geq 0 & \text{+ve semi-definite} \\
+        \leq 0 & \text{-ve semi-definite} \\
+        < 0 & \text{-ve definite} \\
+        \text{else} & \text{indefinite}
+    \end{cases}
+    \begin{array}{l}
+        \left.\begin{array}{l}\mathstrut\\\mathstrut\end{array}\right\}\quad\text{Convex}\\
+        \left.\begin{array}{l}\mathstrut\\\mathstrut\end{array}\right\}\quad\text{Nonconvex}\\
+        \mathstrut
+    \end{array}
+\end{equation}
+Sets/regions may also be convex (s.43)
+If the objective function and feasible region are both convex, the problem is convex and has a unique minimum.
+\subsubsection{Optimisation}
+Neseccary and sufficient conditions:
+\begin{description}
+    \item[Stationary point] (min/max/saddle) $\nabla f\left(x^{*}\right)=0$
+    \item[Strong local minimum] $\boldsymbol{x}^{T} H\left(\boldsymbol{x}^{*}\right) \boldsymbol{x}>0$ (weak: $\geq$) 
+\end{description}
+
 \section{Lecture 2}
 
 \section{Lecture 3}
