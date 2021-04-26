@@ -175,6 +175,44 @@ Comparison w/ OA: larger $M^K$, LB as good or better, fewer iterations.
 Not examinable.
 
 \section{Lecture 6}
+\subsection{Global optimisation}
+Different methods exist
+\begin{description}
+    \item[Incomplete] explore lots of space, but don't necessarily find GO
+    \item[Asymptotically complete] explores infinite space given infinite time
+    \item[Complete] finds GO (to a tolerance) within finite time
+    \item[Rigorous] adds in error control
+\end{description}
+Pros/cons are fairly obvious
+\subsection{Convex relaxations}
+$\breve{f}(x) \leq f(x), \forall x \in X$ and $\breve{f}(x)$ is convex.
+Convex relaxation of NLP provides LB on solution: $\underline{f}^{*} \leq f^{*}$, whereas any \textit{local} solution of the original (nonconvex) NLP provides an UB.
+Apply branch-and-bound to find the actual global optimum.
+
+Various methods exist to find convex relaxations:
+\begin{description}
+    \item[Secant underestimator]
+        \begin{equation}
+            \breve{f}(x)=f\left(x^{L}\right)+\frac{f\left(x^{U}\right)-f\left(x^{L}\right)}{x^{U}-x^{L}}\left(x-x^{L}\right)
+        \end{equation}
+    \item[McCormick] for bilinear terms
+        \begin{gather*}
+            \left.\begin{array}{l}
+                (x-x^L)(y-y^L) \geq 0 \\
+                (x^U-x)(y^U-y) \geq 0        
+            \end{array} \right\} \text{underestimators} \\
+            \left.\begin{array}{l}
+                (x-x^L)(y^U-y) \geq 0 \\
+                (x^U-x)(y-y^L) \geq 0
+            \end{array} \right\} \text{overestimators}
+        \end{gather*}
+    \item[$\alpha$BB] for continous, twice-differentiable functions
+        \begin{gather}
+            L_{f}(\boldsymbol{x})=f(\boldsymbol{x})+\alpha\left(\boldsymbol{x}-\boldsymbol{x}^{L}\right)^{T}\left(\boldsymbol{x}-\boldsymbol{x}^{U}\right) \\
+            \alpha \geq \max \left\{0 ;-\frac{1}{2} \min _{x \in X} \lambda_{\min }\left(H_{f}(\boldsymbol{x})\right)\right\}
+        \end{gather}
+        If $\alpha$ cannot be calculated analytically, use interval arithmetic and scaled Gerschgorin theorem. Can also use SGT to calculate non-uniform shift $\alpha_i$.
+\end{description}
 
 \section{Lecture 7}
 
