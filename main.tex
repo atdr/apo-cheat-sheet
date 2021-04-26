@@ -159,6 +159,16 @@ Basic idea: fix some $y_k$ and solve relaxed subproblem $P_j$.
 \end{description}
 
 \section{Lecture 4}
+\subsection{Solving MINLPs}
+\begin{description}
+    \item[Convexity] for a fixed $\boldsymbol{y}$
+\end{description}
+Use same branch-and-bound as for MILP; relaxation @ nodes is now NLP. Primal/master problem setup w/ 2 methods
+\subsection{Generalised benders decomposition (GBD)}
+Key feature: deal with $\boldsymbol{x}$ and $\boldsymbol{y}$ separately. Iterative refinement. Primal problem $P^K$ provides UB; master problem $M^K$ provides LB.
+\subsection{Outer approximation (OA)}
+Same iterative process as GBD. Master problem different: constructed from sum of linearisations of problem at all previous iterations $k$. Graphically represents a series of linear approximations to the function.
+Comparison w/ OA: larger $M^K$, LB as good or better, fewer iterations.
 
 \section{Lecture 5}
 
