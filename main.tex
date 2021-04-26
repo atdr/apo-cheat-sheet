@@ -215,5 +215,49 @@ Various methods exist to find convex relaxations:
 \end{description}
 
 \section{Lecture 7}
+Process uncertainties:
+\begin{description}
+    \item[Internal] e.g. rate constant, fouling, efficiency
+    \item[External] e.g. feed composition, ambient temperature
+\end{description}
+\subsection{Process flexibility}
+Definition: capability to maintain feasible operation under changing conditions.
+Symbols: $\boldsymbol{\theta}$ - uncertain parameters, $\boldsymbol{d}$ - design variables, $\boldsymbol{z}$ - control variables, $\boldsymbol{x}$ - state variables.
+Start with a full process model and reduce it to focus on $\boldsymbol{\theta}$, $\boldsymbol{z}$.
+\subsection{Flexibility analysis}
+Given a design $\boldsymbol{d}$ and $\boldsymbol{\theta} \in [\boldsymbol{\theta}^L,\boldsymbol{\theta}^U]$, with $\boldsymbol{z}$ allowed to vary:
+\begin{description}
+    \item[Flexibility test] is the design feasible across the \textit{entire} range? (Yes/No).
+        Minimise the maximum violation of the constraints using control:
+        \begin{gather*}
+            \min_{\boldsymbol{z}} \max\left\{\boldsymbol{f}\left(\boldsymbol{z}, \boldsymbol{\theta}\right)\right\} \\
+            \psi(\boldsymbol{\theta}) = \begin{array}[t]{rc} \min _{\boldsymbol{z},u} & u \\
+                \text {s.t.} & u \geq \boldsymbol{f}\left(\boldsymbol{z},\boldsymbol{\theta}\right)
+            \end{array}
+        \end{gather*}
+        Thus we seek to find the region of feasible operation $R = \{\boldsymbol{\theta} | \psi(\boldsymbol{\theta}) \leq 0\}$.
+        If the inequalities are linear, we need only evaluate $\psi(\boldsymbol{\theta})$ at the vertices $\boldsymbol{\theta} \in \{\boldsymbol{\theta}^L,\boldsymbol{\theta}^U\}$.
+    \item[Flexibility index] for which \textit{proportion} of the range is the design feasible?
+        \begin{equation*}
+            \delta^k =\begin{array}[t]{rc} \max_{\delta,\boldsymbol{z}} & \delta \\
+            \text {s.t.} & \boldsymbol{f}\left(\boldsymbol{z},\boldsymbol{\theta}\right) \leq 0 \\
+            & \boldsymbol{\theta} = \boldsymbol{\theta}^N \pm^{(k)} \delta\times\Delta\boldsymbol{\theta}
+            \end{array}
+        \end{equation*}
+        Evaluate at all vertices $k$; pick $\delta = \min_{k} \delta^k$
+\end{description}
+\subsection{Design for flexibility}
+Looking for the best design $\boldsymbol{d}$
+\begin{description}
+    \item[Multiperiod optimisation] select periods $i$ with weightings $W_i$ and cost functions $\Phi_i$
+        \begin{equation*}
+            \begin{array}{rc}
+                \min _{\boldsymbol{d}, \mathbf{z}_{1}, \ldots, \mathbf{z}_{N}} & c(\boldsymbol{d})+\sum_{i=1}^{N} W_{i} \Phi_{i}\left(\boldsymbol{d}, \mathbf{z}_{i}, \boldsymbol{\theta}_{i}\right) \\
+                \text{s.t. }& \boldsymbol{f}\left(\boldsymbol{d}, \mathbf{z}_{\boldsymbol{i}}, \boldsymbol{\theta}_{\boldsymbol{i}}\right) \leq \mathbf{0}, i=1, \ldots, N \\
+                & \boldsymbol{g}(\boldsymbol{d}) \leq \mathbf{0}
+            \end{array}
+        \end{equation*} 
+    \item[Design under uncertainty] Pick several sets of $\boldsymbol{\theta}$ and assign weights. Do multiperiod optimisation. Text flexibility. If fails, add any critical points as an additional period.
+\end{description}
 
 \end{document}
